@@ -489,15 +489,6 @@ db_dashboard = Table(
 
 metadata.create_all(engine)
 # создание суперпользователя
-s = db_users.select().where(db_users.c.email == "2")
-conn = engine.connect()
-result = conn.execute(s).fetchall()
-if len(result) == 0:
-    ins = db_users.insert().values(username="2", hashed_password=Hash().get_password_hash("2"),
-                                disabled=False, permissions = [1], email="2")
-    print(ins)
-    conn = engine.connect()
-    result = conn.execute(ins)
 # создание тестовых данных (все что ниже - удалить)
 s = db_category.select().where(db_category.c.name == "Платья")
 conn = engine.connect()
